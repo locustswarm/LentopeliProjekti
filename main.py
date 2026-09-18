@@ -1,5 +1,3 @@
-import ääni
-print(dir(ääni))
-for i in range(4):
-    (
-    ääni.toista_ääni(300,700))
+player_hp = 5 #vaihda numero tietokannasta otettavaan lukuun
+
+while player_hp > 0:
