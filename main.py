@@ -1,1 +1,1 @@
-# haloo
+print("select myass from yourmom")
