@@ -1,3 +1,14 @@
+#import bossfight somehow
+#import kauppa somehow
+
 player_hp = 5 #vaihda numero tietokannasta otettavaan lukuun
 
 while player_hp > 0:
+    player_action = input("1 - Vaihda sijaintia\n 2 - Mene kauppaan \n")
+
+    if player_action == "1":
+        #bossfight()
+        continue
+    if player_action == "2":
+        #kauppa()
+        continue
