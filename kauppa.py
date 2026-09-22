@@ -1,10 +1,10 @@
 while True:
-    print("Osta\nPoistu")
+    print("Osta - Poistu\n")
     player_kauppa_action = input("")
     if player_kauppa_action.lower() == "poistu":
         break
     elif player_kauppa_action.lower() == "osta":
-        player_ostos = input("Haluatko ostaa hp:ta hinta on 5 euroa \nKyllä tai ei")
+        player_ostos = input("Haluatko ostaa hp:ta hinta on 5 euroa \nKyllä tai ei\n")
         if player_ostos.lower() == "kyllä":
             #lisää hp pelaajan statseihin tietokantaan
             continue
