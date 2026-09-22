@@ -1,4 +1,5 @@
 #def nextLocation:
+    #tee sql query "countries"
     #while True:
         #player_location = input()
         #for country in countries:
