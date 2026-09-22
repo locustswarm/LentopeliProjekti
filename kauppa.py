@@ -1,6 +1,6 @@
 while True:
-    player_kauppa_action = input("")
     print("Osta\nPoistu")
+    player_kauppa_action = input("")
     if player_kauppa_action.lower() == "poistu":
         break
     elif player_kauppa_action.lower() == "osta":
