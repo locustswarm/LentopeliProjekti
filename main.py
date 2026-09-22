@@ -1,4 +1,4 @@
-#import bossfight somehow
+#import bossfight
 import kauppa
 
 player_hp = 5 #vaihda numero tietokannasta otettavaan lukuun
