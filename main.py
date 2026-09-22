@@ -1,5 +1,5 @@
 import kauppa
-#import vaidaSijaintia
+#import vaihdaSijaintia
 
 player_hp = 5 #vaihda numero tietokannasta otettavaan lukuun
 
