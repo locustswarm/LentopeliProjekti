@@ -11,4 +11,3 @@ while player_hp > 0:
         continue
     if player_action == "2":
         kauppa.meneKauppaan()
-        continue
