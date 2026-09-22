@@ -1,6 +1,5 @@
-player_kauppa_action = input("")
-
 while True:
+    player_kauppa_action = input("")
     print("Osta\nPoistu")
     if player_kauppa_action.lower() == "poistu":
         break
@@ -13,6 +12,5 @@ while True:
             continue
     else:
         print("Virhe syötteessä")
-
 
 #keskeneräinen alku
