@@ -1,4 +1,4 @@
-def hae_lentoasemat(valinta):
+def hae_lentoasemat(valinta, maatunnus):
     import mysql.connector
     yhteys = mysql.connector.connect(
         host='127.0.0.1',
@@ -11,7 +11,6 @@ def hae_lentoasemat(valinta):
 
     DBkursori = yhteys.cursor()
     if valinta=="1":
-        maatunnus = input("anna maatunnus: ")
         sql_kysely = f"select name, ident, iso_country, type from airport where iso_country='{maatunnus}' order by type"
 
 
