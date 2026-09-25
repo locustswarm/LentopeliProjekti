@@ -9,4 +9,4 @@ def nextLocation(hp):
             if player_location == value:
                 bossfight.bossfight(value,hp)
             if hp == 0:
-                return
+                break

@@ -8,9 +8,9 @@ def bossfight(location, hp):
     for key, value in bosses.items():
         if key == location and value == True:
             print("The boss approaches you must defeat him! In rock paper scissors...")
-            while player_hp > 0:
+            while player_hp > 0 or bossHP > 0:
                 print(f"The boss currently has {bossHP}")
-                player_action = int(input("1 - rock\n2 - paper\n3 - scissors"))
+                player_action = int(input("1 - rock\n2 - paper\n3 - scissors\n"))
                 boss_action = random.randint(1,3)
                 if player_action == 1 and boss_action == 2:
                     bossHP -= 1
