@@ -8,5 +8,4 @@ def nextLocation(hp):
         for value in countries.values():
             if player_location == value:
                 bossfight.bossfight(value,hp)
-            if hp == 0:
-                return
+        break
