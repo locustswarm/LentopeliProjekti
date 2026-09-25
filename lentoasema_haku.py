@@ -1,3 +1,4 @@
+
 import mysql.connector
 
 yhteys = mysql.connector.connect(
@@ -8,7 +9,6 @@ yhteys = mysql.connector.connect(
          password='juuri',
          autocommit=True
          )
-
 
 DBkursori = yhteys.cursor()
 while True:
