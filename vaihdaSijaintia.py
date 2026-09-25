@@ -8,5 +8,4 @@ def nextLocation():
         for value in countries.values():
             if player_location == value:
                 bossfight.bossfight(value)
-            else:
-                print("Sijainti ei ole saatavilla")
+        print("Sijainti ei ole saatavilla")
