@@ -1,8 +1,7 @@
 import random
-from main import player_hp
 
-def bossfight(location):
-    global player_hp
+def bossfight(location, hp):
+    player_hp = hp
     bosses = {"EFHK":True, "EFIV":False, "EFJO":True}
     bossHP = 5
 
@@ -15,13 +14,13 @@ def bossfight(location):
                 boss_action = random.randint(1,3)
                 if player_action == 1 and boss_action == 2:
                     bossHP -= 1
-                    print(f"The boss loses one life\nhe currently has {bossHP}")
+                    print(f"The boss loses one life")
                 elif player_action == 2 and boss_action == 3:
                     bossHP -= 1
-                    print(f"The boss loses one life\nhe currently has {bossHP}")
+                    print(f"The boss loses one life")
                 elif player_action == 3 and boss_action == 1:
                     bossHP -= 1
-                    print(f"The boss loses one life\nhe currently has {bossHP}")
+                    print(f"The boss loses one life")
                 elif player_action == boss_action:
                     print("Try again")
                 else:
