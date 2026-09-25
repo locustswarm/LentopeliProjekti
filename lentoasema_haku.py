@@ -5,7 +5,7 @@ yhteys = mysql.connector.connect(
          port= 3306,
          database='lentopeli',
          user='root',
-         password='Rotting_dir?1984',
+         password='juuri',
          autocommit=True
          )
 
