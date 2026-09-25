@@ -1,12 +1,12 @@
-#import bossfight
+import bossfight
 
-#def nextLocation:
-    #tee sql query "countries"
-    #while True:
-        #jotain tekstiä tähän
-        #player_location = input()
-        #for country in countries:
-            #if player_location == country:
-                #bossfight tähän
-            #else
-                #print("Sijainti ei ole saatavilla")
+def nextLocation():
+    print("--------------------")
+    countries = {"Helsinki":"EFHK", "Ivalo":"EFIV", "Joensuu":"EFJO"} #tee sql query "countries"
+    while True:
+        player_location = input("Minne matka?\nSyötä ICAO koodi: ")
+        for value in countries.values():
+            if player_location == value:
+                bossfight.bossfight(value)
+            else:
+                print("Sijainti ei ole saatavilla")
