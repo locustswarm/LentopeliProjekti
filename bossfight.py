@@ -1,7 +1,6 @@
 import random
 
-def bossfight(location, hp):
-    player_hp = hp
+def bossfight(location):
     bosses = {"EFHK":True, "EFIV":False, "EFJO":True}
     bossHP = 5
 
