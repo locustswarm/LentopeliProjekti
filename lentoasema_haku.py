@@ -1,3 +1,15 @@
+
+import mysql.connector
+
+yhteys = mysql.connector.connect(
+         host='127.0.0.1',
+         port= 3306,
+         database='lentopeli',
+         user='root',
+         password='Rotting_dir?1984',
+         autocommit=True
+         )
+
 DBkursori = yhteys.cursor()
 while True:
     lentokentta_haku=int(input("(1) hae lentokentät maatunuksella \n (2) hae icao koodilla \n (3)poistu hausta \n valintasi: "))
