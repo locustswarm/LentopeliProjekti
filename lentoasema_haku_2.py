@@ -26,9 +26,9 @@ def hae_lentoasemat(valinta):
     tulos = DBkursori.fetchall()
     return tulos
 
-valinta = input("(1) hae lentokentät maatunuksella \n (2) hae icao koodilla \n valintasi: ")
+#valinta = input("(1) hae lentokentät maatunuksella \n (2) hae icao koodilla \n valintasi: ")
 
-print(hae_lentoasemat(valinta))
+#print(hae_lentoasemat(valinta))
 
 
 
