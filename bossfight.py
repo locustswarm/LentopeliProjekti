@@ -4,6 +4,7 @@ def bossfight(location, hp):
     player_hp = hp
     bosses = {"EFHK":True, "EFIV":False, "EFJO":True}
     bossHP = 5
+    kps = {1:"kiven", 2:"paperin", 3:"sakset"}
 
     for key, value in bosses.items():
         if key == location and value == True:
@@ -18,13 +19,14 @@ def bossfight(location, hp):
                     except:
                         väärin = True
                 boss_action = random.randint(1,3)
-                if player_action == 1 and boss_action == 2:
+                print(f"Pahis: Valitsin {kps[boss_action]}")
+                if player_action == 1 and boss_action == 3:
                     bossHP = bossHP - 1
                     print(f"Pahis menetti yhden elämän")
-                elif player_action == 2 and boss_action == 3:
+                elif player_action == 2 and boss_action == 1:
                     bossHP = bossHP - 1
                     print(f"Pahis menetti yhden elämän")
-                elif player_action == 3 and boss_action == 1:
+                elif player_action == 3 and boss_action == 2:
                     bossHP = bossHP - 1
                     print(f"Pahis menetti yhden elämän")
                 elif player_action == boss_action:
