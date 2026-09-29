@@ -4,7 +4,7 @@ def bossfight(location, hp):
     player_hp = hp
     bosses = {"EFHK":True, "EFIV":False, "EFJO":True}
     bossHP = 5
-    kps = {1:"kiven", 2:"paperin", 3:"sakset"}
+    kps = ["kiven","paperin","sakset"]
 
     for key, value in bosses.items():
         if key == location and value == True:
@@ -15,11 +15,13 @@ def bossfight(location, hp):
                 while väärin:
                     try:
                         player_action = int(input("0 - kivi\n1 - paperi\n2 - sakset\n"))
+                        if player_action > 2 or  player_action < 0:
+                            raise Exception()
                         väärin = False
                     except:
                         väärin = True
                 boss_action = random.randint(0,2)
-                print(f"Pahis: Valitsin {boss_action}")
+                print(f"Pahis: Valitsin {kps[boss_action]}")
                 lopputulos = (boss_action - player_action + 3) % 3
                 if lopputulos == 0:
                     print("Yritä uudelleen! Molemmilla sama valinta")
