@@ -5,7 +5,7 @@ def luo_käyttäjä():
 print("Tervetuloa lentopeliin")
 print("onko sinulla äyttäjä (1)\nei ole käyttäjää     (2)\n")
 käyttäjä = input()
-if kayttäjä == "1":
+if käyttäjä == "1":
     etsi_käyttäjä()
 else:
     luo_käyttäjä()
