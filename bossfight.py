@@ -14,26 +14,21 @@ def bossfight(location, hp):
                 print(f"Sinulla on {player_hp} elämää")
                 while väärin:
                     try:
-                        player_action = int(input("1 - kivi\n2 - paperi\n3 - sakset\n"))
+                        player_action = int(input("0 - kivi\n1 - paperi\n2 - sakset\n"))
                         väärin = False
                     except:
                         väärin = True
-                boss_action = random.randint(1,3)
-                print(f"Pahis: Valitsin {kps[boss_action]}")
-                if player_action == 1 and boss_action == 3:
-                    bossHP = bossHP - 1
-                    print(f"Pahis menetti yhden elämän")
-                elif player_action == 2 and boss_action == 1:
-                    bossHP = bossHP - 1
-                    print(f"Pahis menetti yhden elämän")
-                elif player_action == 3 and boss_action == 2:
-                    bossHP = bossHP - 1
-                    print(f"Pahis menetti yhden elämän")
-                elif player_action == boss_action:
+                boss_action = random.randint(0,2)
+                print(f"Pahis: Valitsin {boss_action}")
+                lopputulos = (boss_action - player_action + 3) % 3
+                if lopputulos == 0:
                     print("Yritä uudelleen! Molemmilla sama valinta")
-                else:
+                elif lopputulos == 1:
                     player_hp = player_hp - 1
                     print(f"Sinä menetit yhden elämän")
+                elif lopputulos == 2:
+                    bossHP = bossHP - 1
+                    print(f"Pahis menetti yhden elämän")
                 väärin = True
         elif key == location and value == False:
             print("Massivista! Sait 1000 kruunua")
