@@ -8,7 +8,7 @@ def bossfight(location, hp):
     for key, value in bosses.items():
         if key == location and value == True:
             print("Pahis lähestyy sinua. Sinun pitää päihittää hänet! kivi sakset paperissa...")
-            while player_hp > 0 or bossHP > 0:
+            while player_hp > 0 and bossHP > 0:
                 print(f"Pahiksella on {bossHP} elämää")
                 print(f"Sinulla on {player_hp} elämää")
                 player_action = int(input("1 - kivi\n2 - paperi\n3 - sakset\n"))
