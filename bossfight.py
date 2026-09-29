@@ -7,25 +7,25 @@ def bossfight(location, hp):
 
     for key, value in bosses.items():
         if key == location and value == True:
-            print("The boss approaches you must defeat him! In rock paper scissors...")
+            print("Pahis lähestyy sinua. Sinun pitää päihittää hänet! kivi sakset paperissa...")
             while player_hp > 0 or bossHP > 0:
-                print(f"The boss currently has {bossHP}")
-                print(f"You currently have {player_hp}")
-                player_action = int(input("1 - rock\n2 - paper\n3 - scissors\n"))
+                print(f"Pahiksella on {bossHP} elämää")
+                print(f"Sinulla on {player_hp} elämää")
+                player_action = int(input("1 - kivi\n2 - paperi\n3 - sakset\n"))
                 boss_action = random.randint(1,3)
                 if player_action == 1 and boss_action == 2:
                     bossHP = bossHP - 1
-                    print(f"The boss loses one life")
+                    print(f"Pahis menetti yhden elämän")
                 elif player_action == 2 and boss_action == 3:
                     bossHP = bossHP - 1
-                    print(f"The boss loses one life")
+                    print(f"Pahis menetti yhden elämän")
                 elif player_action == 3 and boss_action == 1:
                     bossHP = bossHP - 1
-                    print(f"The boss loses one life")
+                    print(f"Pahis menetti yhden elämän")
                 elif player_action == boss_action:
-                    print("Try again")
+                    print("Yritä uudelleen! Molemmilla sama valinta")
                 else:
                     player_hp = player_hp - 1
-                    print(f"You lose one life")
+                    print(f"Sinä menetit yhden elämän")
         elif key == location and value == False:
-            print("you get money!!!\n 10 kr")
+            print("Massivista! Sait 1000 kruunua")
