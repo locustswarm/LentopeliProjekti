@@ -1,40 +1,31 @@
 import random
-import lentoasema_haku_2
 
-def bossfight(location):
-    väärin = True
-    player_hp = lentoasema_haku_2.hae_pelaaja_HP()
+def bossfight(location, hp):
+    player_hp = hp
     bosses = {"EFHK":True, "EFIV":False, "EFJO":True}
     bossHP = 5
-    kps = ["kiven","paperin","sakset"]
 
     for key, value in bosses.items():
         if key == location and value == True:
-            print("Pahis lähestyy sinua. Sinun pitää päihittää hänet! kivi sakset paperissa...")
-            while player_hp > 0 and bossHP > 0:
-                print(f"Pahiksella on {bossHP} elämää")
-                print(f"Sinulla on {player_hp} elämää")
-                while väärin:
-                    try:
-                        player_action = int(input("0 - kivi\n1 - paperi\n2 - sakset\n"))
-                        if player_action > 2 or  player_action < 0:
-                            raise Exception()
-                        väärin = False
-                    except:
-                        väärin = True
-                boss_action = random.randint(0,2)
-                print(f"Pahis: Valitsin {kps[boss_action]}")
-                lopputulos = (boss_action - player_action + 3) % 3
-                if lopputulos == 0:
-                    print("Yritä uudelleen! Molemmilla sama valinta")
-                elif lopputulos == 1:
-                    lentoasema_haku_2.meneta_pelaaja_HP()
-                    player_hp = player_hp - 1
-                    print(f"Sinä menetit yhden elämän")
-                elif lopputulos == 2:
+            print("The boss approaches you must defeat him! In rock paper scissors...")
+            while player_hp > 0 or bossHP > 0:
+                print(f"The boss currently has {bossHP}")
+                print(f"You currently have {player_hp}")
+                player_action = int(input("1 - rock\n2 - paper\n3 - scissors\n"))
+                boss_action = random.randint(1,3)
+                if player_action == 1 and boss_action == 2:
                     bossHP = bossHP - 1
-                    print(f"Pahis menetti yhden elämän")
-                väärin = True
+                    print(f"The boss loses one life")
+                elif player_action == 2 and boss_action == 3:
+                    bossHP = bossHP - 1
+                    print(f"The boss loses one life")
+                elif player_action == 3 and boss_action == 1:
+                    bossHP = bossHP - 1
+                    print(f"The boss loses one life")
+                elif player_action == boss_action:
+                    print("Try again")
+                else:
+                    player_hp = player_hp - 1
+                    print(f"You lose one life")
         elif key == location and value == False:
-            print("Massivista! Sait 1000 kruunua")
-            lentoasema_haku_2.saa_rahaa()
+            print("you get money!!!\n 10 kr")
