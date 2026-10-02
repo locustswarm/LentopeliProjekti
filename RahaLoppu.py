@@ -11,4 +11,3 @@ def tulosta_viikatemies():
     print("      ⣾⣿⣿⣿⣷")
     print("      ⣿⣿⣿⣿⣿⣷⣄")
     print("      ⠛⠛⠛⠛⠛⠛⠉")
-tulosta_viikatemies()
