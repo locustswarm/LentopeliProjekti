@@ -29,3 +29,29 @@ def meneta_pelaaja_HP():
     DBkursori = yhteys.cursor()
     sql_kysely=f"UPDATE game SET co2_consumed = co2_consumed + 1 WHERE gamertag = 'jyrki'"
     DBkursori.execute(sql_kysely)
+
+def saa_HP():
+    yhteys = sqlYhteys.yhteys
+    DBkursori = yhteys.cursor()
+    sql_kysely=f"UPDATE game SET co2_budget = co2_budget +   WHERE gamertag = 'jyrki'"
+    DBkursori.execute(sql_kysely)
+
+def saa_rahaa():
+    yhteys = sqlYhteys.yhteys
+    DBkursori = yhteys.cursor()
+    sql_kysely=f"UPDATE game SET moneys = moneys + 1000 WHERE gamertag = 'jyrki'"
+    DBkursori.execute(sql_kysely)
+
+def kayta_rahaa(raha):
+    yhteys = sqlYhteys.yhteys
+    DBkursori = yhteys.cursor()
+    sql_kysely=f"UPDATE game SET moneys = moneys - raha WHERE gamertag = 'jyrki'"
+    DBkursori.execute(sql_kysely)
+
+def raha_tallahetkella():
+    yhteys = sqlYhteys.yhteys
+    DBkursori = yhteys.cursor()
+    sql_kysely = f"select moneys from game"
+    DBkursori.execute(sql_kysely)
+    tulos = DBkursori.fetchall()
+    return tulos
