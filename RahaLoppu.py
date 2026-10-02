@@ -23,5 +23,4 @@ def täysin_loppu():
     print("liian myöhastä!")
     for i in range(5):
         ääni.toista_ääni(400,100)
-
-täysin_loppu()
+    print("viikate mies tuli koska raha negatiivinen: peli päättyi")
