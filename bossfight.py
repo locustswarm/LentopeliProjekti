@@ -1,7 +1,9 @@
 import random
-def bossfight(location, hp):
+import lentoasema_haku_2
+
+def bossfight(location):
     väärin = True
-    player_hp = hp
+    player_hp = lentoasema_haku_2.hae_pelaaja_HP()
     bosses = {"EFHK":True, "EFIV":False, "EFJO":True}
     bossHP = 5
     kps = ["kiven","paperin","sakset"]
@@ -26,6 +28,7 @@ def bossfight(location, hp):
                 if lopputulos == 0:
                     print("Yritä uudelleen! Molemmilla sama valinta")
                 elif lopputulos == 1:
+                    lentoasema_haku_2.meneta_pelaaja_HP()
                     player_hp = player_hp - 1
                     print(f"Sinä menetit yhden elämän")
                 elif lopputulos == 2:
