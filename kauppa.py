@@ -1,5 +1,6 @@
 import lentoasema_haku_2
 import random
+import RahaLoppu
 
 def meneKauppaan():
     pelaajan_raha = lentoasema_haku_2.raha_tallahetkella()
