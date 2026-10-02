@@ -5,6 +5,6 @@ yhteys = mysql.connector.connect(
     port=3306,
     database='lentopeli',
     user='root',
-    password='juuri',
+    password='Ihatesql123',
     autocommit=True
 )
