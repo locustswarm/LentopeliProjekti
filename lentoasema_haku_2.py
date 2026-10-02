@@ -30,6 +30,12 @@ def meneta_pelaaja_HP():
     sql_kysely=f"UPDATE game SET co2_consumed = co2_consumed + 1 WHERE gamertag = 'jyrki'"
     DBkursori.execute(sql_kysely)
 
+def kuole():
+    yhteys = sqlYhteys.yhteys
+    DBkursori = yhteys.cursor()
+    sql_kysely=f"UPDATE game SET co2_consumed = co2_consumed + co2_budget WHERE gamertag = 'jyrki'"
+    DBkursori.execute(sql_kysely)
+
 def saa_HP():
     yhteys = sqlYhteys.yhteys
     DBkursori = yhteys.cursor()
