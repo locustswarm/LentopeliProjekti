@@ -37,3 +37,4 @@ def bossfight(location):
                 väärin = True
         elif key == location and value == False:
             print("Massivista! Sait 1000 kruunua")
+            lentoasema_haku_2.saa_rahaa()
