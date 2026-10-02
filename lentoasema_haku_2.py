@@ -45,7 +45,7 @@ def saa_rahaa():
 def kayta_rahaa(raha):
     yhteys = sqlYhteys.yhteys
     DBkursori = yhteys.cursor()
-    sql_kysely=f"UPDATE game SET moneys = moneys - raha WHERE gamertag = 'jyrki'"
+    sql_kysely=f"UPDATE game SET moneys = moneys - {raha} WHERE gamertag = 'jyrki'"
     DBkursori.execute(sql_kysely)
 
 def raha_tallahetkella():
@@ -54,4 +54,4 @@ def raha_tallahetkella():
     sql_kysely = f"select moneys from game"
     DBkursori.execute(sql_kysely)
     tulos = DBkursori.fetchall()
-    return tulos
+    return tulos[0][0]
