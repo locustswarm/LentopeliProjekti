@@ -17,7 +17,8 @@ def meneKauppaan():
                 if pelaajan_raha - rng_maksu4fun < 0:
                     varma = input("Oletko varma? Tästä voi olla seurauksia\n Kyllä tai ei")
                     if varma.lower() == "kyllä":
-                        continue
+                        RahaLoppu.täysin_loppu()
+                        lentoasema_haku_2.kuole()
                 else:
                     lentoasema_haku_2.kayta_rahaa(rng_maksu4fun)
                     lentoasema_haku_2.saa_HP()
