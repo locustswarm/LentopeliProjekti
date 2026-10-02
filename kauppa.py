@@ -1,9 +1,11 @@
+import RahaLoppu
 import lentoasema_haku_2
 import random
 
 def meneKauppaan():
     pelaajan_raha = lentoasema_haku_2.raha_tallahetkella()
-
+    if pelaajan_raha < 50:
+        RahaLoppu.rahat_lopussa()
     print(f"--------------------\nTervetuloa kauppaani! Sinulla on {pelaajan_raha} euroa")
     while True:
         print("1 - Osta\n2 - Poistu")

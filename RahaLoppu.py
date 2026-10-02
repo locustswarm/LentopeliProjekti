@@ -18,3 +18,10 @@ def rahat_lopussa():
     for i in range(3):
         ääni.toista_ääni(300,500)
     print("rahat vähissä!")
+def täysin_loppu():
+    tulosta_viikatemies()
+    print("liian myöhastä!")
+    for i in range(5):
+        ääni.toista_ääni(400,100)
+
+täysin_loppu()
