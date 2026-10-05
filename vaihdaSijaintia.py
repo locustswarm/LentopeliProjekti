@@ -10,5 +10,6 @@ def nextLocation():
         player_location = input("Minne matka?\nSyötä ICAO koodi: ")
         for value in countries.values():
             if player_location == value:
-                bossfight.bossfight(value)
+                bossi = lentoasema_haku_2.onkoBoss(value)
+                bossfight.bossfight(value, bossi)
         break
