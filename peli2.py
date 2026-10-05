@@ -82,13 +82,4 @@ def luo_kayttaja():
         # lisätään id listaan
         return f"Käyttäjäsi ja sen ID: {nyky_kayttaja}"
 
-print("Tervetuloa lentopeliin")
-while len(nyky_kayttaja)==0:
-    #pääset pois päävalikosta kun käyttäjä on valittu tai luotu
-    valinta = input("On käyttäjä (1) Ei ole käyttäjää     (2)\n Valintasi: ")
-    if valinta == "1":
-        print(etsi_kayttaja())
-    else:
-        print(luo_kayttaja())
 
-print(nyky_kayttaja)
