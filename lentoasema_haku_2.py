@@ -61,3 +61,11 @@ def raha_tallahetkella():
     DBkursori.execute(sql_kysely)
     tulos = DBkursori.fetchall()
     return tulos[0][0]
+
+def onkoBoss(boss):
+    yhteys = sqlYhteys.yhteys
+    DBkursori = yhteys.cursor()
+    sql_kysely=f"select type from airport where ident = '{boss}'"
+    DBkursori.execute(sql_kysely)
+    tulos = DBkursori.fetchall()
+    return tulos[0][0]
