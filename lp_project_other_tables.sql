@@ -22,7 +22,7 @@ game_id int,
 boss_id int,
 primary key(game_ID, boss_ID),
 foreign key(game_id) references game(ID),
-foreign key(game_id) references boss(ID)
+foreign key(boss_id) references boss(ID)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 create table airport_cleared(

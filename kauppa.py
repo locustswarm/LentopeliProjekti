@@ -16,10 +16,8 @@ def meneKauppaan():
             player_ostos = input(f"Haluatko ostaa hp:ta hinta on {rng_maksu4fun} euroa \nKyllä tai ei\n")
             if player_ostos.lower() == "kyllä":
                 if pelaajan_raha - rng_maksu4fun < 0:
-                    varma = input("Oletko varma? Tästä voi olla seurauksia\n Kyllä tai ei\n")
-                    if varma.lower() == "kyllä":
-                        RahaLoppu.täysin_loppu()
-                        lentoasema_haku_2.kuole()
+                    RahaLoppu.täysin_loppu()
+                    lentoasema_haku_2.kuole()
                 else:
                     lentoasema_haku_2.kayta_rahaa(rng_maksu4fun)
                     lentoasema_haku_2.saa_HP()
