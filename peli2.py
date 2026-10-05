@@ -80,7 +80,7 @@ def luo_kayttaja():
         # lisätään käyttäjä nimi listaan
         nyky_kayttaja.append(tulos[0][1])
         # lisätään id listaan
-        return nyky_kayttaja
+        return f"Käyttäjäsi ja sen ID: {nyky_kayttaja}"
 
 print("Tervetuloa lentopeliin")
 while len(nyky_kayttaja)==0:
