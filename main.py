@@ -9,12 +9,9 @@ while väärin:
         valinta = input("1 - Kirjaudu\n2 - Luo käyttäjä\n")
         if valinta == "1":
             kayttaja = peli.etsi_kayttaja()
-            print(kayttaja)
             väärin = False
         elif valinta == "2":
             kayttaja = peli.luo_kayttaja()
-            print(kayttaja)
-            väärin = False
     except:
         väärin = True
 
@@ -26,6 +23,6 @@ while player_hp > 0:
     if player_action == "1":
         vaihdaSijaintia.nextLocation(kayttaja)
     if player_action == "2":
-        kauppa.meneKauppaan()
+        kauppa.meneKauppaan(kayttaja)
     if player_action == "3":
         break

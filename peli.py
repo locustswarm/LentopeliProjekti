@@ -1,12 +1,11 @@
 #Ohjelma kättäjän etsimiseen ja luontiin
 
 import sqlYhteys
+
 DBkursori = sqlYhteys.yhteys.cursor()
 
-nyky_kayttaja=[]
-    #Lista johon tallenetaan käyttäjän pelinimi ja ID
-
 def etsi_kayttaja():
+    nyky_kayttaja = []
     while True:
         kayttajanimi=input("Anna etsimäsi käyttäjän nimi: ")
         sql_kysely=f"select gamertag, id from game where gamertag='{kayttajanimi}';"
@@ -19,65 +18,42 @@ def etsi_kayttaja():
         else:
             print(f"Löydettiin käyttäjä: {kayttajanimi}")
 
-            valinta=input("Haluatko pelata tällä käyttäjällä?  Kyllä (1)\n En (2)\nValintasi:")
+            valinta=input("Haluatko pelata tällä käyttäjällä?\nKyllä (1)\nEn (2)\nValintasi:")
             if valinta == "1":
                 nyky_kayttaja.append(tulos[0][0])
                 nyky_kayttaja.append(tulos[0][1])
-                print(f"Käyttäsi ja sen ID: {nyky_kayttaja}")
+                print(f"Käyttänimesi on {nyky_kayttaja[0]} ja sen ID on {nyky_kayttaja[1]}")
                 return tulos[0][0]
             else:
-                print("Palataan päävalikkoon")
+                print("Kirjaudu uudelleen")
 
 def luo_kayttaja():
-    kayttajanimi = input("Anna käyttäjällesi nimi: ")
-    if kayttajanimi=="" or kayttajanimi==" ":
-        return("Käyttäjänimi ei voi olla tyhjä")
-            #Tällä estetään tyhjät käyttäjänimet
+    nyky_kayttaja = []
+    while True:
+        kayttajanimi = input("Anna käyttäjällesi nimi: ")
+        if kayttajanimi=="" or kayttajanimi==" ":
+            print("Käyttäjänimi ei voi olla tyhjä")
 
-    sql_kysely=f"select gamertag from game;"
-    DBkursori.execute(sql_kysely)
-    tulos = DBkursori.fetchall()
+        elif kayttajanimi!="" or kayttajanimi!=" ":
+            sql_kysely=f"select gamertag from game;"
+            DBkursori.execute(sql_kysely)
+            tulos = DBkursori.fetchall()
 
-    kayttaja_olemassa=0
-    #Ohjelma varmaan toimii myös ilman tätä muuttujaa
-    for rivi in tulos:
+            kayttaja_olemassa=0
+            for rivi in tulos:
 
-        if kayttajanimi.lower() == rivi[0].lower():
-            kayttaja_olemassa = 1
-            return f"Käyttäjänimi {kayttajanimi} on jo olemassa. Kokeile toista nimeä"
+                if kayttajanimi.lower() == rivi[0].lower():
+                    kayttaja_olemassa = 1
+                    print(f"Käyttäjänimi {kayttajanimi} on jo olemassa. Kokeile toista nimeä")
 
-    if kayttaja_olemassa == 0:
-        sql_kysely=f"insert into game(co2_consumed, co2_budget, gamertag, location, moneys) values(0, 10000, '{kayttajanimi}', 'EFHF', 404);"
-        DBkursori.execute(sql_kysely)
-        #Käyttäjän luoti
-        sql_kysely = f"insert into boss (boss_hp, boss_fight, likes_apples, name) values(100, 0, 'Yeah', '{kayttajanimi}');";
-        DBkursori.execute(sql_kysely)
-        #Käyttäjälle pahiksen luonti (Pahiksen nimi on sama kuin käyttäjällä jotta yhteyden luonti olisi helpompaa)
-        yhteys_pahikseen = []
-        # Lista johon lisätään pahiksen ja pelaajan id (Yhteyden luontia varten)
-        sql_kysely=f"select id from game where gamertag='{kayttajanimi}';"
-            #haetaa käyttäjä id
-        DBkursori.execute(sql_kysely)
-        tulos = DBkursori.fetchall()
+            if kayttaja_olemassa == 0:
+                sql_kysely=f"insert into game(co2_consumed, co2_budget, gamertag, location, moneys) values(0, 100, '{kayttajanimi}', 'EFHF', 404);"
+                DBkursori.execute(sql_kysely)
 
-        yhteys_pahikseen.append(tulos[0][0])
-            #Lisätään käyttäjän id listaan
-        sql_kysely = f"select id from boss where name='{kayttajanimi}';"
-            #Haetaan pahis id
-        DBkursori.execute(sql_kysely)
-
-        tulos = DBkursori.fetchall()
-        yhteys_pahikseen.append(tulos[0][0])
-        # Lisätään pahis id listaan
-        sql_kysely=f"insert into boss_reached values ({yhteys_pahikseen[0]}, {yhteys_pahikseen[1]});"
-        DBkursori.execute(sql_kysely)
-
-        sql_kysely = f"select gamertag, id from game where gamertag='{kayttajanimi}';"
-        DBkursori.execute(sql_kysely)
-        tulos = DBkursori.fetchall()
-
-        nyky_kayttaja.append(tulos[0][0])
-        # lisätään käyttäjä nimi listaan
-        nyky_kayttaja.append(tulos[0][1])
-        # lisätään id listaan
-        return f"Käyttäjäsi ja sen ID: {nyky_kayttaja}"
+                sql_kysely = f"select gamertag, id from game where gamertag='{kayttajanimi}';"
+                DBkursori.execute(sql_kysely)
+                tulos = DBkursori.fetchall()
+                nyky_kayttaja.append(tulos[0][0])
+                nyky_kayttaja.append(tulos[0][1])
+                print(f"Kaikki ok! Voit kirjautua sisään\nKäyttänimesi on {nyky_kayttaja[0]} ja sen ID on {nyky_kayttaja[1]}")
+                return tulos[0][0]
