@@ -23,6 +23,6 @@ while player_hp > 0:
     if player_action == "1":
         vaihdaSijaintia.nextLocation(kayttaja)
     if player_action == "2":
-        kauppa.meneKauppaan()
+        kauppa.meneKauppaan(kayttaja)
     if player_action == "3":
         break

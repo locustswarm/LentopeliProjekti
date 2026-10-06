@@ -52,40 +52,40 @@ def hae_pelaaja_HP(kayttaja):
     hp = tulos[0][0] - tulos[0][1]
     return hp
 
-def meneta_pelaaja_HP():
+def meneta_pelaaja_HP(kayttaja):
     yhteys = sqlYhteys.yhteys
     DBkursori = yhteys.cursor()
-    sql_kysely=f"UPDATE game SET co2_consumed = co2_consumed + 1 WHERE gamertag = 'jyrki'"
+    sql_kysely=f"UPDATE game SET co2_consumed = co2_consumed + 1 WHERE gamertag = '{kayttaja}'"
     DBkursori.execute(sql_kysely)
 
-def kuole():
+def kuole(kayttaja):
     yhteys = sqlYhteys.yhteys
     DBkursori = yhteys.cursor()
-    sql_kysely=f"UPDATE game SET co2_consumed = co2_consumed + co2_budget WHERE gamertag = 'jyrki'"
+    sql_kysely=f"UPDATE game SET co2_consumed = co2_consumed + co2_budget WHERE gamertag = '{kayttaja}'"
     DBkursori.execute(sql_kysely)
 
-def saa_HP(hp):
+def saa_HP(hp, kayttaja):
     yhteys = sqlYhteys.yhteys
     DBkursori = yhteys.cursor()
-    sql_kysely=f"UPDATE game SET co2_budget = co2_budget + {hp} WHERE gamertag = 'jyrki'"
+    sql_kysely=f"UPDATE game SET co2_budget = co2_budget + {hp} WHERE gamertag = '{kayttaja}'"
     DBkursori.execute(sql_kysely)
 
-def saa_rahaa():
+def saa_rahaa(kayttaja):
     yhteys = sqlYhteys.yhteys
     DBkursori = yhteys.cursor()
-    sql_kysely=f"UPDATE game SET moneys = moneys + 1000 WHERE gamertag = 'jyrki'"
+    sql_kysely=f"UPDATE game SET moneys = moneys + 1000 WHERE gamertag = '{kayttaja}'"
     DBkursori.execute(sql_kysely)
 
-def kayta_rahaa(raha):
+def kayta_rahaa(raha, kayttaja):
     yhteys = sqlYhteys.yhteys
     DBkursori = yhteys.cursor()
-    sql_kysely=f"UPDATE game SET moneys = moneys - {raha} WHERE gamertag = 'jyrki'"
+    sql_kysely=f"UPDATE game SET moneys = moneys - {raha} WHERE gamertag = '{kayttaja}'"
     DBkursori.execute(sql_kysely)
 
-def raha_tallahetkella():
+def raha_tallahetkella(kayttaja):
     yhteys = sqlYhteys.yhteys
     DBkursori = yhteys.cursor()
-    sql_kysely = f"select moneys from game"
+    sql_kysely = f"select moneys from game WHERE gamertag= '{kayttaja}'"
     DBkursori.execute(sql_kysely)
     tulos = DBkursori.fetchall()
     return tulos[0][0]
