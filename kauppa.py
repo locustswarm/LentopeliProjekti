@@ -13,14 +13,15 @@ def meneKauppaan():
             break
         elif player_kauppa_action == "1":
             rng_maksu4fun = random.randint(500, 1000)
-            player_ostos = input(f"Haluatko ostaa hp:ta hinta on {rng_maksu4fun} euroa \nKyllä tai ei\n")
+            rng_hp4fun = random.randint(500, 1000)
+            player_ostos = input(f"Haluatko ostaa {rng_hp4fun} hp:ta hinta on {rng_maksu4fun} euroa \nKyllä tai ei\n")
             if player_ostos.lower() == "kyllä":
                 if pelaajan_raha - rng_maksu4fun < 0:
                     RahaLoppu.täysin_loppu()
                     lentoasema_haku_2.kuole()
                 else:
                     lentoasema_haku_2.kayta_rahaa(rng_maksu4fun)
-                    lentoasema_haku_2.saa_HP()
+                    lentoasema_haku_2.saa_HP(rng_hp4fun)
                     print("Kaikki hyvin!")
             else:
                 continue
