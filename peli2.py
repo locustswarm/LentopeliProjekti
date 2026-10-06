@@ -1,7 +1,7 @@
 #Ohjelma kättäjän etsimiseen ja luontiin
 
-import sqlYhteys
-DBkursori = sqlYhteys.yhteys.cursor()
+import SQL_yhteys
+DBkursori = SQL_yhteys.yhteys.cursor()
 
 nyky_kayttaja=[]
     #Lista johon tallenetaan käyttäjän pelinimi ja ID
@@ -24,10 +24,9 @@ def etsi_kayttaja():
                 #lisätään käyttäjä nimi listaan
             nyky_kayttaja.append(tulos[0][1])
                 #lisätään id listaan
-            print(f"Käyttäsi ja sen ID: {nyky_kayttaja}")
-            return tulos[0][0]
+            return f"Käyttäsi ja sen ID: {nyky_kayttaja}"
         else:
-            print("Palataan päävalikkoon")
+            return "Palataan päävalikkoon"
 
 def luo_kayttaja():
     kayttajanimi = input("Anna käyttäjällesi nimi: ")
@@ -82,3 +81,14 @@ def luo_kayttaja():
         nyky_kayttaja.append(tulos[0][1])
         # lisätään id listaan
         return f"Käyttäjäsi ja sen ID: {nyky_kayttaja}"
+
+print("Tervetuloa lentopeliin")
+while len(nyky_kayttaja)==0:
+    #pääset pois päävalikosta kun käyttäjä on valittu tai luotu
+    valinta = input("On käyttäjä (1) Ei ole käyttäjää     (2)\n Valintasi: ")
+    if valinta == "1":
+        print(etsi_kayttaja())
+    else:
+        print(luo_kayttaja())
+
+print(nyky_kayttaja)
