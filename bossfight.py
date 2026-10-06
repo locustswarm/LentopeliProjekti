@@ -1,9 +1,9 @@
 import random
 import lentoasema_haku_2
 
-def bossfight(location, type):
+def bossfight(location, type,hp):
     väärin = True
-    player_hp = lentoasema_haku_2.hae_pelaaja_HP()
+    player_hp = hp
     bossHP = 5
     kps = ["kiven","paperin","sakset"]
 

@@ -4,7 +4,7 @@ import lentoasema_haku_2
 
 def nextLocation(kayttaja,hp):
     print("--------------------")
-    tulostus = 1
+    tulostus = 0
     asemat = lentoasema_haku_2.hae_lentoasemat("1", "FI")
     countries = dict(asemat)
     while True:
@@ -15,14 +15,16 @@ def nextLocation(kayttaja,hp):
         while True:
             if asemat_lähellä[tulostus][0] > hp:
                 break
-            print(f"{asemat_lähellä[ tulostus + 1 ][0]: .2f}km kaukana | nimi: {asemat_lähellä[ tulostus + 1 ][1]} | ICAO koodi: {asemat_lähellä[ tulostus + 1 ][2]}")
             tulostus += 1
+            print(f"{asemat_lähellä[ tulostus + 1 ][0]: .2f}km kaukana | nimi: {asemat_lähellä[ tulostus + 1 ][1]} | ICAO koodi: {asemat_lähellä[ tulostus + 1 ][2]}")
         kohde = input("Minne matka?\nSyötä ICAO koodi: ")
         if kohde in countries.values():
             print(f"ollaan menossa kohteeseen {kohde}")
 
             if lentoasema_haku_2.onkoBoss(kohde):
-                bossfight.bossfight()
+                bossfight.bossfight(sijainti,"large_airport",hp)
+                print("pahis kuoli")
+                break
         else:
             print("kokeile uudelleen, kohde ei saatavilla / olemassa.")
         break
