@@ -9,12 +9,9 @@ while väärin:
         valinta = input("1 - Kirjaudu\n2 - Luo käyttäjä\n")
         if valinta == "1":
             kayttaja = peli.etsi_kayttaja()
-            print(kayttaja)
             väärin = False
         elif valinta == "2":
             kayttaja = peli.luo_kayttaja()
-            print(kayttaja)
-            väärin = False
     except:
         väärin = True
 
