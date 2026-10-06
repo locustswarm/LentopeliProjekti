@@ -47,7 +47,7 @@ def luo_kayttaja():
                     print(f"Käyttäjänimi {kayttajanimi} on jo olemassa. Kokeile toista nimeä")
 
             if kayttaja_olemassa == 0:
-                sql_kysely=f"insert into game(co2_consumed, co2_budget, gamertag, location, moneys) values(0, 10000, '{kayttajanimi}', 'EFHF', 404);"
+                sql_kysely=f"insert into game(co2_consumed, co2_budget, gamertag, location, moneys) values(0, 100, '{kayttajanimi}', 'EFHF', 404);"
                 DBkursori.execute(sql_kysely)
 
                 sql_kysely = f"select gamertag, id from game where gamertag='{kayttajanimi}';"
