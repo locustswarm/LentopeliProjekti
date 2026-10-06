@@ -1,7 +1,7 @@
 #Ohjelma kättäjän etsimiseen ja luontiin
 
-import SQL_yhteys
-DBkursori = SQL_yhteys.yhteys.cursor()
+import sqlYhteys
+DBkursori = sqlYhteys.yhteys.cursor()
 
 nyky_kayttaja=[]
     #Lista johon tallenetaan käyttäjän pelinimi ja ID
