@@ -9,6 +9,7 @@ def tulosta_lentokone():
     print("  ⣀⡠⠴⠒⠉⠉ ⢀⣀⣀⠤⡤⢶⣶⣋⠉⠉   ⠈⠉⠉⠉⠉⠉⠁")
     print("⣖⣉⣁⣠⠤⠶⡶⡶⢍⡉   ⠙⠒⠯⠜")
     print(" ⠁    ⠑⢦⣯⠇")
+
 def tulosta_viikatemies():
     print("          ⢀⣴⡆")
     print("     ⢀⣶⣆⢀⠔⠁ ⣷")
