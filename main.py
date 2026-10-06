@@ -1,8 +1,24 @@
 import kauppa
 import vaihdaSijaintia
 import lentoasema_haku_2
+import peli
 
-player_hp = lentoasema_haku_2.hae_pelaaja_HP()
+väärin = True
+while väärin:
+    try:
+        valinta = input("1 - Kirjaudu\n2 - Luo käyttäjä\n")
+        if valinta == "1":
+            kayttaja = peli.etsi_kayttaja()
+            print(kayttaja)
+            väärin = False
+        elif valinta == "2":
+            kayttaja = peli.luo_kayttaja()
+            print(kayttaja)
+            väärin = False
+    except:
+        väärin = True
+
+player_hp = lentoasema_haku_2.hae_pelaaja_HP(kayttaja)
 
 while player_hp > 0:
     player_action = input("1 - Vaihda sijaintia\n2 - Mene kauppaan\n3 - Lopeta peli\n")

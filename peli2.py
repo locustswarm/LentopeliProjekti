@@ -1,32 +1,32 @@
 #Ohjelma kättäjän etsimiseen ja luontiin
 
-import sqlYhteys
-DBkursori = sqlYhteys.yhteys.cursor()
+import SQL_yhteys
+DBkursori = SQL_yhteys.yhteys.cursor()
 
 nyky_kayttaja=[]
     #Lista johon tallenetaan käyttäjän pelinimi ja ID
 
 def etsi_kayttaja():
-    while True:
-        kayttajanimi=input("Anna etsimäsi käyttäjän nimi: ")
-        sql_kysely=f"select gamertag, id from game where gamertag='{kayttajanimi}';"
-        DBkursori.execute(sql_kysely)
-        tulos = DBkursori.fetchall()
+    kayttajanimi=input("Anna etsimäsi käyttäjän nimi: ")
+    sql_kysely=f"select gamertag, id from game where gamertag='{kayttajanimi}';"
+    DBkursori.execute(sql_kysely)
+    tulos = DBkursori.fetchall()
 
-        if len(tulos)==0:
-            print("Käyttäjää ei löytynyt")
+    if len(tulos)==0:
+        return "Käyttäjää ei löytynyt"
 
+    else:
+        print(f"Löydettiin käyttäjä: {kayttajanimi}")
+
+        valinta=input("Haluatko pelata tällä käyttäjällä?  Kyllä (1)\n En (2)\nValintasi:")
+        if valinta == "1":
+            nyky_kayttaja.append(tulos[0][0])
+                #lisätään käyttäjä nimi listaan
+            nyky_kayttaja.append(tulos[0][1])
+                #lisätään id listaan
+            return f"Käyttäsi ja sen ID: {nyky_kayttaja}"
         else:
-            print(f"Löydettiin käyttäjä: {kayttajanimi}")
-
-            valinta=input("Haluatko pelata tällä käyttäjällä?  Kyllä (1)\n En (2)\nValintasi:")
-            if valinta == "1":
-                nyky_kayttaja.append(tulos[0][0])
-                nyky_kayttaja.append(tulos[0][1])
-                print(f"Käyttäsi ja sen ID: {nyky_kayttaja}")
-                return tulos[0][0]
-            else:
-                print("Palataan päävalikkoon")
+            return "Palataan päävalikkoon"
 
 def luo_kayttaja():
     kayttajanimi = input("Anna käyttäjällesi nimi: ")
@@ -81,3 +81,14 @@ def luo_kayttaja():
         nyky_kayttaja.append(tulos[0][1])
         # lisätään id listaan
         return f"Käyttäjäsi ja sen ID: {nyky_kayttaja}"
+
+print("Tervetuloa lentopeliin")
+while len(nyky_kayttaja)==0:
+    #pääset pois päävalikosta kun käyttäjä on valittu tai luotu
+    valinta = input("On käyttäjä (1) Ei ole käyttäjää     (2)\n Valintasi: ")
+    if valinta == "1":
+        print(etsi_kayttaja())
+    else:
+        print(luo_kayttaja())
+
+print(nyky_kayttaja)
