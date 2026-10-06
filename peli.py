@@ -7,27 +7,26 @@ nyky_kayttaja=[]
     #Lista johon tallenetaan käyttäjän pelinimi ja ID
 
 def etsi_kayttaja():
-    kayttajanimi=input("Anna etsimäsi käyttäjän nimi: ")
-    sql_kysely=f"select gamertag, id from game where gamertag='{kayttajanimi}';"
-    DBkursori.execute(sql_kysely)
-    tulos = DBkursori.fetchall()
+    while True:
+        kayttajanimi=input("Anna etsimäsi käyttäjän nimi: ")
+        sql_kysely=f"select gamertag, id from game where gamertag='{kayttajanimi}';"
+        DBkursori.execute(sql_kysely)
+        tulos = DBkursori.fetchall()
 
-    if len(tulos)==0:
-        return "Käyttäjää ei löytynyt"
+        if len(tulos)==0:
+            print("Käyttäjää ei löytynyt")
 
-    else:
-        print(f"Löydettiin käyttäjä: {kayttajanimi}")
-
-        valinta=input("Haluatko pelata tällä käyttäjällä?  Kyllä (1)\n En (2)\nValintasi:")
-        if valinta == "1":
-            nyky_kayttaja.append(tulos[0][0])
-                #lisätään käyttäjä nimi listaan
-            nyky_kayttaja.append(tulos[0][1])
-                #lisätään id listaan
-            print(f"Käyttäsi ja sen ID: {nyky_kayttaja}")
-            return tulos[0][0]
         else:
-            print("Palataan päävalikkoon")
+            print(f"Löydettiin käyttäjä: {kayttajanimi}")
+
+            valinta=input("Haluatko pelata tällä käyttäjällä?  Kyllä (1)\n En (2)\nValintasi:")
+            if valinta == "1":
+                nyky_kayttaja.append(tulos[0][0])
+                nyky_kayttaja.append(tulos[0][1])
+                print(f"Käyttäsi ja sen ID: {nyky_kayttaja}")
+                return tulos[0][0]
+            else:
+                print("Palataan päävalikkoon")
 
 def luo_kayttaja():
     kayttajanimi = input("Anna käyttäjällesi nimi: ")

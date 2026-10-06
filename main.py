@@ -6,7 +6,7 @@ import peli
 väärin = True
 while väärin:
     try:
-        valinta = input("1 - Kirjaudu\n 2 - Luo käyttäjä")
+        valinta = input("1 - Kirjaudu\n2 - Luo käyttäjä\n")
         if valinta == "1":
             kayttaja = peli.etsi_kayttaja()
             print(kayttaja)
