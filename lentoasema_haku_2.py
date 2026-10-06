@@ -1,19 +1,33 @@
 import sqlYhteys
 from geopy import distance
+def hae_kordinaatti_sijainnilla(mesta):
+    yhteys = sqlYhteys.yhteys
+    DBkursori = yhteys.cursor()
+    sql_kysely = f"select latitude_deg , longitude_deg from airport where ident='{mesta}'"
+    DBkursori.execute(sql_kysely)
+    tulos = DBkursori.fetchall()
+    return tulos
 def hae_lähin_asema(meidän_paikka):
     lähin = []
     etäisyys = 0
+    kordinaatti_meidän = hae_kordinaatti_sijainnilla(meidän_paikka)
     yhteys = sqlYhteys.yhteys
     DBkursori = yhteys.cursor()
-    sql_kysely=f"select latitude_deg, longitude_deg, name from airport"
+    sql_kysely=f"select latitude_deg, longitude_deg, name, ident from airport"
     DBkursori.execute(sql_kysely)
     tulos = DBkursori.fetchall()
     for tulo in tulos:
-        etäisyys = distance.distance(meidän_paikka,(tulo[0],tulo[1])).km
-        seuraava = [etäisyys,tulo[2]]
+        etäisyys = distance.distance(kordinaatti_meidän,(tulo[0],tulo[1])).km
+        seuraava = [etäisyys,tulo[2],tulo[3]]
         lähin.append(seuraava)
     return sorted(lähin, key=lambda x: x[0])
-
+def hae_sijainti_nimellä(nimi):
+    yhteys = sqlYhteys.yhteys
+    DBkursori = yhteys.cursor()
+    sql_kysely = f"select location from game where gamertag='{nimi}'"
+    DBkursori.execute(sql_kysely)
+    tulos = DBkursori.fetchall()
+    return tulos[0][0]
 def hae_lentoasemat(valinta, maatunnus):
     yhteys = sqlYhteys.yhteys
 
@@ -105,3 +119,8 @@ def onkoBoss(boss):
     DBkursori.execute(sql_kysely)
     tulos = DBkursori.fetchall()
     return tulos[0][0]
+def vaihda_pelaajan_sijaintia(nimi,uusi_mesta):
+    yhteys = sqlYhteys.yhteys
+    DBkursori = yhteys.cursor()
+    sql_kysely=f"update game set location = {uusi_mesta} where gamertag = {nimi}"
+    DBkursori.execute(sql_kysely)
