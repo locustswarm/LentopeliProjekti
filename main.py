@@ -16,12 +16,12 @@ while väärin:
         väärin = True
 
 player_hp = lentoasema_haku_2.hae_pelaaja_HP(kayttaja)
-
+player_hp = 100
 while player_hp > 0:
     player_action = input("1 - Vaihda sijaintia\n2 - Mene kauppaan\n3 - Lopeta peli\n")
 
     if player_action == "1":
-        vaihdaSijaintia.nextLocation(kayttaja)
+        vaihdaSijaintia.nextLocation(kayttaja,player_hp)
     if player_action == "2":
         kauppa.meneKauppaan(kayttaja)
     if player_action == "3":
