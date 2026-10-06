@@ -1,4 +1,4 @@
-def tulosta_lentokone:
+def tulosta_lentokone():
     print("   ⣖⠲⡀              ⢸⠉⡇")
     print("   ⠸⡆⠹⡀⣠⢤⡄          ⡏ ⡧⢤⡄")
     print("    ⡧⢄⣹⣅⣜⡀         ⢸⠁ ⢹⠚⠃")
