@@ -32,7 +32,7 @@ def hae_lentoasemat(valinta, maatunnus):
 def hae_pelaaja_HP(kayttaja):
     yhteys = sqlYhteys.yhteys
     DBkursori = yhteys.cursor()
-    sql_kysely=f"select co2_budget, co2_consumed from game"
+    sql_kysely=f"select co2_budget, co2_consumed from game WHERE gamertag='{kayttaja}'"
     DBkursori.execute(sql_kysely)
     tulos = DBkursori.fetchall()
     hp = tulos[0][0] - tulos[0][1]
