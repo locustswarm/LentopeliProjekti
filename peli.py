@@ -24,9 +24,10 @@ def etsi_kayttaja():
                 #lisätään käyttäjä nimi listaan
             nyky_kayttaja.append(tulos[0][1])
                 #lisätään id listaan
-            return f"Käyttäsi ja sen ID: {nyky_kayttaja}"
+            print(f"Käyttäsi ja sen ID: {nyky_kayttaja}")
+            return tulos[0][0]
         else:
-            return "Palataan päävalikkoon"
+            print("Palataan päävalikkoon")
 
 def luo_kayttaja():
     kayttajanimi = input("Anna käyttäjällesi nimi: ")
