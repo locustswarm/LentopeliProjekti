@@ -1,6 +1,7 @@
 #Ohjelma kättäjän etsimiseen ja luontiin
 
 import sqlYhteys
+
 DBkursori = sqlYhteys.yhteys.cursor()
 
 def etsi_kayttaja():
@@ -24,7 +25,7 @@ def etsi_kayttaja():
                 print(f"Käyttänimesi on {nyky_kayttaja[0]} ja sen ID on {nyky_kayttaja[1]}")
                 return tulos[0][0]
             else:
-                print("Palataan päävalikkoon")
+                print("Kirjaudu uudelleen")
 
 def luo_kayttaja():
     nyky_kayttaja = []
