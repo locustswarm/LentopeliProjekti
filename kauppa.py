@@ -5,7 +5,7 @@ import RahaLoppu
 def meneKauppaan(kayttaja):
     pelaajan_raha = lentoasema_haku_2.raha_tallahetkella(kayttaja)
     pelaajan_hp = lentoasema_haku_2.hae_pelaaja_HP(kayttaja)
-    print(f"--------------------\nTervetuloa kauppaani! Sinulla on {pelaajan_raha} euroa ja {pelaajan_hp()} hp:tä")
+    print(f"--------------------\nTervetuloa kauppaani! Sinulla on {pelaajan_raha} euroa ja {pelaajan_hp} hp:tä")
     while True:
         print("1 - Osta\n2 - Poistu")
         player_kauppa_action = input("")
