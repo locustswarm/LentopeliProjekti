@@ -16,7 +16,7 @@ while väärin:
         väärin = True
 
 player_hp = lentoasema_haku_2.hae_pelaaja_HP(kayttaja)
-player_hp = 100
+
 while player_hp > 0:
     player_action = input("1 - Vaihda sijaintia\n2 - Mene kauppaan\n3 - Lopeta peli\n")
 

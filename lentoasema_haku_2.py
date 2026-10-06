@@ -28,12 +28,12 @@ def hae_sijainti_nimellä(nimi):
     DBkursori.execute(sql_kysely)
     tulos = DBkursori.fetchall()
     return tulos[0][0]
-def hae_lentoasemat(valinta, maatunnus):
+def hae_lentoasemat(valinta):
     yhteys = sqlYhteys.yhteys
 
     DBkursori = yhteys.cursor()
     if valinta=="1":
-        sql_kysely = f"select name, ident from airport where iso_country='{maatunnus}' order by type"
+        sql_kysely = f"select name, ident from airport order by type"
 
 
     elif valinta=="2":

@@ -5,7 +5,7 @@ import lentoasema_haku_2
 def nextLocation(kayttaja,hp):
     print("--------------------")
     tulostus = 0
-    asemat = lentoasema_haku_2.hae_lentoasemat("1", "FI")
+    asemat = lentoasema_haku_2.hae_lentoasemat("1")
     countries = dict(asemat)
     while True:
         sijainti = lentoasema_haku_2.hae_sijainti_nimellä(kayttaja)
@@ -22,7 +22,7 @@ def nextLocation(kayttaja,hp):
             print(f"ollaan menossa kohteeseen {kohde}")
 
             if lentoasema_haku_2.onkoBoss(kohde):
-                bossfight.bossfight(sijainti,"large_airport",hp)
+                bossfight.bossfight(sijainti,"large_airport",hp, kayttaja)
                 print("pahis kuoli")
                 break
         else:
