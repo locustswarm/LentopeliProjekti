@@ -29,7 +29,7 @@ def hae_lentoasemat(valinta, maatunnus):
     tulos = DBkursori.fetchall()
     return tulos
 
-def hae_pelaaja_HP():
+def hae_pelaaja_HP(kayttaja):
     yhteys = sqlYhteys.yhteys
     DBkursori = yhteys.cursor()
     sql_kysely=f"select co2_budget, co2_consumed from game"
@@ -75,6 +75,28 @@ def raha_tallahetkella():
     DBkursori.execute(sql_kysely)
     tulos = DBkursori.fetchall()
     return tulos[0][0]
+
+def onkoBoss(boss):
+    yhteys = sqlYhteys.yhteys
+    DBkursori = yhteys.cursor()
+    sql_kysely=f"select type from airport where ident = '{boss}'"
+    DBkursori.execute(sql_kysely)
+    tulos = DBkursori.fetchall()
+    return tulos[0][0]
+
+def onkolentokenttaTuhottu(icao):
+    yhteys = sqlYhteys.yhteys
+    DBkursori = yhteys.cursor()
+    sql_kysely=f"select airport_ident from airport_cleared where airport_ident = '{icao}'"
+    DBkursori.execute(sql_kysely)
+    tulos = DBkursori.fetchall()
+    return tulos[0][0]
+
+def tuhoalentokentta(icao, user_id):
+    yhteys = sqlYhteys.yhteys
+    DBkursori = yhteys.cursor()
+    sql_kysely=f"INSERT INTO airport_cleared (airport_ident) VALUES ('{icao}') WHERE game_ID = '{user_id}'"
+    DBkursori.execute(sql_kysely)
 
 def onkoBoss(boss):
     yhteys = sqlYhteys.yhteys
