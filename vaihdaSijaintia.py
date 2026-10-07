@@ -20,7 +20,7 @@ def nextLocation(kayttaja,hp):
         kohde = input("Minne matka?\nSyötä ICAO koodi: ")
         if kohde in countries.values():
             print(f"ollaan menossa kohteeseen {kohde}")
-            #lisää tietokanta muutos sijaintiin
+            lentoasema_haku_2.vaihda_pelaajan_sijaintia(kayttaja, kohde) #<---- sijainnin vaihto
             if lentoasema_haku_2.onkoBoss(kohde):
                 bossfight.bossfight(sijainti,"large_airport",hp, kayttaja)
                 print("pahis kuoli")
