@@ -113,5 +113,5 @@ def onkoBoss(sijainti):
 def vaihda_pelaajan_sijaintia(nimi,uusi_mesta):
     yhteys = sqlYhteys.yhteys
     DBkursori = yhteys.cursor()
-    sql_kysely=f"update game set location = {uusi_mesta} where gamertag = {nimi}"
+    sql_kysely=f"update game set location = '{uusi_mesta}' where gamertag = '{nimi}'"
     DBkursori.execute(sql_kysely)
