@@ -1,9 +1,12 @@
 import random
 import lentoasema_haku_2
+import grafiikka
 
 def bossfight(location, type,hp, kayttaja):
     väärin = True
     player_hp = hp
+    nimet=["beromgleb","Jyrki_mutta_pahis", "Gibby", "Zormox", "Jeremy"]
+    bossName=nimet[random.randint(0,len(nimet)-1)]
     bossHP = 5
     kps = ["kiven","paperin","sakset"]
 
