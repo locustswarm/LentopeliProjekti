@@ -28,12 +28,12 @@ def hae_sijainti_nimellä(nimi):
     DBkursori.execute(sql_kysely)
     tulos = DBkursori.fetchall()
     return tulos[0][0]
-def hae_lentoasemat(valinta, maatunnus):
+def hae_lentoasemat(valinta):
     yhteys = sqlYhteys.yhteys
 
     DBkursori = yhteys.cursor()
     if valinta=="1":
-        sql_kysely = f"select name, ident from airport where iso_country='{maatunnus}' order by type"
+        sql_kysely = f"select name, ident from airport order by type"
 
 
     elif valinta=="2":
@@ -89,15 +89,6 @@ def raha_tallahetkella(kayttaja):
     DBkursori.execute(sql_kysely)
     tulos = DBkursori.fetchall()
     return tulos[0][0]
-
-def onkoBoss(boss):
-    yhteys = sqlYhteys.yhteys
-    DBkursori = yhteys.cursor()
-    sql_kysely=f"select type from airport where ident = '{boss}'"
-    DBkursori.execute(sql_kysely)
-    tulos = DBkursori.fetchall()
-    return tulos[0][0]
-
 def onkolentokenttaTuhottu(icao):
     yhteys = sqlYhteys.yhteys
     DBkursori = yhteys.cursor()
@@ -112,15 +103,15 @@ def tuhoalentokentta(icao, user_id):
     sql_kysely=f"INSERT INTO airport_cleared (airport_ident) VALUES ('{icao}') WHERE game_ID = '{user_id}'"
     DBkursori.execute(sql_kysely)
 
-def onkoBoss(boss):
+def onkoBoss(sijainti):
     yhteys = sqlYhteys.yhteys
     DBkursori = yhteys.cursor()
-    sql_kysely=f"select type from airport where ident = '{boss}'"
+    sql_kysely=f"select * from airport where ident = '{sijainti}' and type='large_airport'"
     DBkursori.execute(sql_kysely)
     tulos = DBkursori.fetchall()
-    return tulos[0][0]
+    return len(tulos)
 def vaihda_pelaajan_sijaintia(nimi,uusi_mesta):
     yhteys = sqlYhteys.yhteys
     DBkursori = yhteys.cursor()
-    sql_kysely=f"update game set location = {uusi_mesta} where gamertag = {nimi}"
+    sql_kysely=f"update game set location = '{uusi_mesta}' where gamertag = '{nimi}'"
     DBkursori.execute(sql_kysely)

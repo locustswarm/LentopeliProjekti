@@ -1,9 +1,12 @@
 import random
 import lentoasema_haku_2
+import grafiikka
 
-def bossfight(location, type):
+def bossfight(location, type,hp, kayttaja):
     väärin = True
-    player_hp = lentoasema_haku_2.hae_pelaaja_HP()
+    player_hp = hp
+    nimet=["beromgleb","Jyrki_mutta_pahis", "Gibby", "Zormox", "Jeremy"]
+    bossName=nimet[random.randint(0,len(nimet)-1)]
     bossHP = 5
     kps = ["kiven","paperin","sakset"]
 
@@ -26,7 +29,7 @@ def bossfight(location, type):
             if lopputulos == 0:
                 print("Yritä uudelleen! Molemmilla sama valinta")
             elif lopputulos == 1:
-                lentoasema_haku_2.meneta_pelaaja_HP()
+                lentoasema_haku_2.meneta_pelaaja_HP(kayttaja)
                 player_hp = player_hp - 1
                 print(f"Sinä menetit yhden elämän")
             elif lopputulos == 2:
