@@ -55,7 +55,7 @@ def hae_pelaaja_HP(kayttaja):
 def meneta_pelaaja_HP(kayttaja):
     yhteys = sqlYhteys.yhteys
     DBkursori = yhteys.cursor()
-    sql_kysely=f"UPDATE game SET co2_consumed = co2_consumed + 1 WHERE gamertag = '{kayttaja}'"
+    sql_kysely=f"UPDATE game SET co2_consumed = co2_consumed + 4 WHERE gamertag = '{kayttaja}'"
     DBkursori.execute(sql_kysely)
 
 def kuole(kayttaja):
@@ -89,10 +89,10 @@ def raha_tallahetkella(kayttaja):
     DBkursori.execute(sql_kysely)
     tulos = DBkursori.fetchall()
     return tulos[0][0]
-def onkolentokenttaTuhottu(icao):
+def onkolentokenttaTuhottu(icao, user_id):
     yhteys = sqlYhteys.yhteys
     DBkursori = yhteys.cursor()
-    sql_kysely=f"select airport_ident from airport_cleared where airport_ident = '{icao}'"
+    sql_kysely=f"select airport_ident from airport_cleared where airport_ident = '{icao}'and game_id='{user_id}'"
     DBkursori.execute(sql_kysely)
     tulos = DBkursori.fetchall()
     return tulos[0][0]
@@ -100,7 +100,7 @@ def onkolentokenttaTuhottu(icao):
 def tuhoalentokentta(icao, user_id):
     yhteys = sqlYhteys.yhteys
     DBkursori = yhteys.cursor()
-    sql_kysely=f"INSERT INTO airport_cleared (airport_ident) VALUES ('{icao}') WHERE game_ID = '{user_id}'"
+    sql_kysely=f"INSERT INTO airport_cleared VALUES ({user_id},'{icao}');"
     DBkursori.execute(sql_kysely)
 
 def onkoBoss(sijainti):
@@ -115,3 +115,19 @@ def vaihda_pelaajan_sijaintia(nimi,uusi_mesta):
     DBkursori = yhteys.cursor()
     sql_kysely=f"update game set location = '{uusi_mesta}' where gamertag = '{nimi}'"
     DBkursori.execute(sql_kysely)
+
+def hae_pelaajan_ID(nimi):
+    yhteys = sqlYhteys.yhteys
+    DBkursori = yhteys.cursor()
+    sql_kysely=f"select id from game where gamertag = '{nimi}';"
+    DBkursori.execute(sql_kysely)
+    tulos = DBkursori.fetchall()
+    return tulos[0][0]
+
+def hae_tuhotut(nimi):
+    yhteys = sqlYhteys.yhteys
+    DBkursori = yhteys.cursor()
+    sql_kysely = f"select count(airport_ident) from airport_cleared where game_id in(select id from game where gamertag='{nimi}');"
+    DBkursori.execute(sql_kysely)
+    tulos = DBkursori.fetchall()
+    return tulos[0][0]

@@ -2,7 +2,7 @@ import lentoasema_haku_2
 import random
 import RahaLoppu
 import grafiikka
-
+import ääni
 def meneKauppaan(kayttaja):
 
     pelaajan_raha = lentoasema_haku_2.raha_tallahetkella(kayttaja)
@@ -10,11 +10,12 @@ def meneKauppaan(kayttaja):
 
     print("")
     grafiikka.tulosta_kauppias()
-
+    ääni.toista_ääni(300, 300)
     print(f"^\n[Tervetuloa kauppaani!]")
     while True:
         pelaajan_raha = lentoasema_haku_2.raha_tallahetkella(kayttaja)
         pelaajan_hp = lentoasema_haku_2.hae_pelaaja_HP(kayttaja)
+        print(f"Käyttäjänimi: {kayttaja}")
         grafiikka.tulosta_pilotti()
         print(f"HP: {pelaajan_hp}\nRahat: {pelaajan_raha} kr")
         print("1 - Osta\n2 - Poistu")
@@ -24,14 +25,13 @@ def meneKauppaan(kayttaja):
         elif player_kauppa_action == "1":
             rng_maksu4fun = random.randint(500, 1000)
             rng_hp4fun = random.randint(500, 1000)
-            player_ostos = input(f"Haluatko ostaa {rng_hp4fun} hp:ta hinta on {rng_maksu4fun} euroa \nKyllä tai ei\n")
+            player_ostos = input(f"Haluatko ostaa {rng_hp4fun} hp:ta hinta on {rng_maksu4fun} kruunua \nKyllä tai ei\n")
             if player_ostos.lower() == "kyllä":
                 if pelaajan_raha - rng_maksu4fun < 0:
                     RahaLoppu.täysin_loppu()
-                    grafiikka.tulosta_pilotti_kuoli()
                     lentoasema_haku_2.kuole(kayttaja)
-
-                    break
+                    grafiikka.tulosta_pilotti_kuoli()
+                    exit()
                 else:
                     lentoasema_haku_2.kayta_rahaa(rng_maksu4fun, kayttaja)
                     lentoasema_haku_2.saa_HP(rng_hp4fun, kayttaja)
