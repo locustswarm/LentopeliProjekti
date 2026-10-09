@@ -5,6 +5,7 @@ import peli
 import grafiikka
 
 väärin = True
+print("Tervetuloa LENTOPELI v2-copy(3):een")
 while väärin:
     try:
         valinta = input("1 - Kirjaudu\n2 - Luo käyttäjä\n")
